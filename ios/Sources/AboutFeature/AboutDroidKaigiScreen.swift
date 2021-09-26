@@ -77,13 +77,17 @@ public struct AboutDroidKaigiScreen: View {
                     Button(action: {
                         switch model {
                         case .behaviorCode:
-                            return // TODO: add navigation
+                            if let url = URL(string: "http://www.association.droidkaigi.jp/code-of-conduct.html"), UIApplication.shared.canOpenURL(url) {
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }
                         case .opensourceLicense:
                             if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
                                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                             }
                         case .privacyPolicy:
-                            break // TODO: add navigation
+                            if let url = URL(string: "http://www.association.droidkaigi.jp/privacy.html"), UIApplication.shared.canOpenURL(url) {
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }
                         }
                     }, label: {
                         HStack {
